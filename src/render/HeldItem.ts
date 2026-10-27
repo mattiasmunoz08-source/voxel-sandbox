@@ -55,12 +55,12 @@ export class HeldItem {
       tex.magFilter = THREE.NearestFilter;
       tex.minFilter = THREE.NearestFilter;
       tex.generateMipmaps = false;
-      const geo = new THREE.PlaneGeometry(0.42, 0.42);
+      const geo = new THREE.PlaneGeometry(0.32, 0.32);
       const mat = new THREE.MeshBasicMaterial({ map: tex, alphaTest: 0.5, side: THREE.DoubleSide });
       this.disposables.push(tex, geo, mat);
       this.materials.push(mat);
       obj = new THREE.Mesh(geo, mat);
-      obj.position.set(0.5, -0.36, -0.82);
+      obj.position.set(0.46, -0.34, -0.8);
       obj.rotation.set(0, -0.5, 0.1);
     } else {
       // Brazo: manga de tela turquesa y mano.

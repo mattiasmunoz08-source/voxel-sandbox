@@ -4,6 +4,8 @@ Sandbox voxel 3D para el navegador: explora un mundo de bloques generado por sem
 
 Hecho con **Vite + TypeScript + Three.js**, con HTML y CSS para menús e interfaz.
 
+**Jugar ahora:** https://voxel-sandbox-gamma.vercel.app
+
 ## Requisitos
 
 - Node.js 20.19 o superior (probado con Node 24.22.1 LTS).

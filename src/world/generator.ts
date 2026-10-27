@@ -86,12 +86,22 @@ export class TerrainGenerator {
         const x = Math.round(Math.cos(a) * radius);
         const z = Math.round(Math.sin(a) * radius);
         const col = this.column(x, z);
-        if (col.height > SEA_LEVEL + 1 && col.height < 56 && !this.hasTree(x, z, col)) {
+        if (col.height > SEA_LEVEL + 1 && col.height < 56 && !this.treeNear(x, z)) {
           return { x: x + 0.5, y: col.height + 1, z: z + 0.5 };
         }
       }
     }
     return { x: 0.5, y: CHUNK_HEIGHT - 4, z: 0.5 };
+  }
+
+  /** ¿Hay algún árbol cuya copa alcance esta columna? Evita aparecer dentro de las hojas. */
+  private treeNear(x: number, z: number): boolean {
+    for (let dz = -MARGIN; dz <= MARGIN; dz++) {
+      for (let dx = -MARGIN; dx <= MARGIN; dx++) {
+        if (this.hasTree(x + dx, z + dz, this.column(x + dx, z + dz))) return true;
+      }
+    }
+    return false;
   }
 
   private treeChance(biome: number): number {
