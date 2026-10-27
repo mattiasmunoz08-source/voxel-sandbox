@@ -60,8 +60,25 @@ body.in-menu #game {
   pointer-events: none;
 }
 
-#ui > * {
-  pointer-events: auto;
+/*
+ * Capas de la interfaz, de abajo arriba: controles táctiles, HUD, inventario y menús.
+ * El HUD y los controles táctiles sólo capturan clics en sus elementos interactivos
+ * (barra rápida, aviso, botones), así el resto llega al lienzo o a la capa de debajo.
+ */
+#ui > .touch {
+  z-index: 1;
+}
+
+#ui > .hud {
+  z-index: 2;
+}
+
+#ui > .inventory-overlay {
+  z-index: 5;
+}
+
+#ui > .menu-overlay {
+  z-index: 10;
 }
 
 [hidden] {
@@ -85,6 +102,7 @@ select {
 .overlay {
   position: absolute;
   inset: 0;
+  pointer-events: auto;
   display: grid;
   place-items: center;
   padding: 16px;
